@@ -9,7 +9,8 @@ declare(strict_types=1);
 // Entorno de la aplicación: 'development' | 'production'
 define('APP_ENV', 'development');
 define('APP_NAME', 'ALDEX CAPITAL');
-define('APP_URL', 'https://aldexcapital.com');
+// TODO: Actualizar APP_URL al dominio propio definitivo cuando apunte al servicio.
+define('APP_URL', 'https://aldexcapital.onrender.com');
 define('APP_VERSION', '3.1.0');
 
 // Configuración de contacto

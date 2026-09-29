@@ -13,7 +13,7 @@ $services = ServicesModel::getAll();
 
       <div class="footer-brand">
         <div class="footer-brand__row">
-          <img src="<?= IMAGES_PATH ?>/aldex_icon_gold.png?v=<?= APP_VERSION ?>" alt="ALDEX CAPITAL" width="46" height="46">
+          <img src="<?= IMAGES_PATH ?>/aldex_icon_gold.png?v=<?= APP_VERSION ?>" alt="ALDEX CAPITAL Isotipo" loading="lazy" width="46" height="46">
           <div>
             <span class="footer-brand__name">ALDEX CAPITAL</span>
             <span class="footer-brand__tag">Capacidad operativa por demanda</span>

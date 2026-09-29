@@ -16,6 +16,21 @@
 
 declare(strict_types=1);
 
+// ── Endpoint /health para Keep-Alive (sin sesión, sin DB, sin logs) ──
+$requestPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
+if ($requestPath === '/health') {
+    $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+    if ($method === 'GET' || $method === 'HEAD') {
+        header('Content-Type: text/plain; charset=UTF-8');
+        header('Cache-Control: no-store');
+        http_response_code(200);
+        if ($method === 'GET') {
+            echo 'ok';
+        }
+        exit;
+    }
+}
+
 // ── Autoload de clases ─────────────────────────────────────────
 require_once __DIR__ . '/config/config.php';
 require_once __DIR__ . '/src/helpers/SecurityHelper.php';
@@ -44,14 +59,14 @@ $contactController = new ContactController();
 $contactController->handle();
 
 // ── Meta variables para la vista ──────────────────────────────
-$pageTitle       = APP_NAME . ' | Capacidad operativa por demanda para empresas pequeñas';
-$pageDescription = 'ALDEX CAPITAL es la capa operativa externa para equipos de 5 a 20 personas: ejecuta procesos, diligencias, activos e inteligencia con trazabilidad y confidencialidad. Villavicencio, Meta.';
+$pageTitle       = 'ALDEX CAPITAL | Capacidad operativa por demanda en Villavicencio';
+$pageDescription = 'Capa operativa externa para equipos de 5 a 20 personas. Procesos, diligencias, activos e inteligencia con trazabilidad. Villavicencio, Meta.';
 $pageUrl         = APP_URL;
 
 // ── Render ─────────────────────────────────────────────────────
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CO">
 
 <?php require_once __DIR__ . '/src/views/partials/head.php'; ?>
 

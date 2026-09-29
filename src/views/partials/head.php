@@ -22,20 +22,48 @@ $pageUrl         = $pageUrl         ?? APP_URL;
   <meta name="theme-color" content="#081120">
 
   <meta property="og:type"        content="website">
+  <meta property="og:locale"      content="es_CO">
+  <meta property="og:site_name"   content="ALDEX CAPITAL">
   <meta property="og:url"         content="<?= SecurityHelper::escape($pageUrl) ?>">
   <meta property="og:title"       content="<?= SecurityHelper::escape($pageTitle) ?>">
   <meta property="og:description" content="<?= SecurityHelper::escape($pageDescription) ?>">
-  <meta property="og:image"       content="<?= SecurityHelper::escape(APP_URL . IMAGES_PATH . '/aldex_logo_3d_transparent.png') ?>">
+  <meta property="og:image"       content="<?= SecurityHelper::escape(rtrim($pageUrl, '/') . IMAGES_PATH . '/aldex_logo_3d_transparent.png') ?>">
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:title"       content="<?= SecurityHelper::escape($pageTitle) ?>">
   <meta name="twitter:description" content="<?= SecurityHelper::escape($pageDescription) ?>">
 
-  <!-- Preconnect -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "ALDEX CAPITAL",
+    "url": <?= json_encode($pageUrl, JSON_UNESCAPED_SLASHES) ?>,
+    "logo": <?= json_encode(rtrim($pageUrl, '/') . IMAGES_PATH . '/aldex_icon_gold.png', JSON_UNESCAPED_SLASHES) ?>,
+    "telephone": "+57 317 278 9641",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Villavicencio",
+      "addressRegion": "Meta",
+      "addressCountry": "CO"
+    },
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "Villavicencio, Meta, Colombia"
+    },
+    "makesOffer": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diligencias Corporativas" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Inteligencia Operativa" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Soporte Administrativo por Demanda" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gestión Técnica de Activos" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Soluciones Tecnológicas" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "B2B Branding y Comunidad" } }
+    ]
+  }
+  </script>
 
-  <!-- Tipografía: system-first (SF Pro en Apple) + Inter como fallback consistente -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Preload de la fuente del cuerpo (Inter) -->
+  <link rel="preload" href="<?= ASSETS_PATH ?>/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- CSS -->
   <link rel="stylesheet" href="<?= ASSETS_PATH ?>/css/styles.css?v=<?= APP_VERSION ?>">

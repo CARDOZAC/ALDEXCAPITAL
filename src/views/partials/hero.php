@@ -42,7 +42,7 @@ declare(strict_types=1);
         <div class="console glass glass--lg" role="img" aria-label="Consola operativa de ejemplo: una operación avanzando por las etapas Asignado, En ejecución, Soporte adjunto y Cerrado.">
           <div class="console__head">
             <span class="console__id">
-              <img src="<?= IMAGES_PATH ?>/aldex_icon_gold.png?v=<?= APP_VERSION ?>" alt="" aria-hidden="true">
+              <img src="<?= IMAGES_PATH ?>/aldex_icon_gold.png?v=<?= APP_VERSION ?>" alt="ALDEX CAPITAL Isotipo en Consola" fetchpriority="high" width="22" height="22">
               OP-2048 · Gestión operativa
             </span>
             <span class="console__dots" aria-hidden="true"><i></i><i></i><i></i></span>

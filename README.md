@@ -118,4 +118,23 @@ $mail->send();
 
 ---
 
-**JACOM CORE** — Precisión operativa, máxima confidencialidad.
+## Mantenimiento y Keep-Alive en Render (Plan Gratuito)
+
+Para evitar que el servicio gratuito de Render entre en estado de inactividad (spin down) tras 15 minutos sin tráfico, el proyecto incluye un endpoint ultrarrápido y liviano en `/health`:
+
+### Configuración en Render:
+- **Health Check Path:** `/health`
+- Devuelve estado HTTP `200` y cuerpo `ok` en menos de 200 ms.
+- Sin acceso a base de datos, sin iniciar sesión de PHP y sin generar registros de log.
+- Incluye el header `Cache-Control: no-store`.
+
+### Monitoreo Externo e Integración:
+1. **GitHub Actions Workflow:** El archivo `.github/workflows/keep-alive.yml` ejecuta una solicitud cron cada 5 minutos (`*/5 * * * *`) mediante `curl` hacia `https://aldexcapital.onrender.com/health`.
+2. **UptimeRobot / Monitor Externo (Recomendado):**
+   - **URL:** `https://aldexcapital.onrender.com/health`
+   - **Tipo:** HTTP(s) / HEAD o GET
+   - **Intervalo:** 5 minutos
+
+---
+
+**ALDEX CAPITAL** — Precisión operativa, máxima confidencialidad.
